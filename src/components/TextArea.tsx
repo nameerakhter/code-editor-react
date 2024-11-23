@@ -3,7 +3,6 @@ import Prism from "prismjs";
 import { TextAreaprops } from "../../types/index.ts";
 
 export default function TextArea({
-  className,
   initialCode = "",
   language,
 }: TextAreaprops) {
@@ -22,8 +21,8 @@ export default function TextArea({
     textAreaHeight.style.height = `${Math.min(textAreaHeight.scrollHeight, 400)}px`;
   }
   return (
-    <div className={`relative mx-auto ${className}`}>
-      {/* TODO: cursor need to more closer to text it is a little disorienting when making changes in code  */}
+    <div className={`relative mx-auto `}>
+      {/* FIX:  the text area is scrollable but the highlight is not scrollable*/}
       <pre
         className=" h-full absolute inset-0 m-0 pt-0 px-[1em] overflow-hidden whitespace-pre-wrap font-mono leading-normal"
         style={{

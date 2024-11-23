@@ -8,7 +8,6 @@ function App() {
       <div>
         <TextArea
           language={Languages[0]}
-          className="border"
           initialCode="const hello = 'world';"
         />
       </div>

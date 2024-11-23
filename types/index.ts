@@ -1,5 +1,4 @@
 export interface TextAreaprops {
-  className?: string;
   initialCode?: string;
   language: LanguagesSupported;
 }
