@@ -12,13 +12,18 @@ export default function TextArea({
   language = "js",
 }: TextAreaprops) {
   const [code, setCode] = useState<string>(initialCode);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       Prism.highlightAll();
     }
   }, [code, language]);
+
   function handleChange(e: React.ChangeEvent<HTMLTextAreaElement>): void {
     setCode(e.target.value);
+    const textAreaHeight = e.target;
+    textAreaHeight.style.height = "auto";
+    textAreaHeight.style.height = `${Math.min(textAreaHeight.scrollHeight, 400)}px`;
   }
   return (
     <div className={`relative mx-auto ${className}`}>
@@ -38,7 +43,7 @@ export default function TextArea({
       <textarea
         value={code}
         onChange={handleChange}
-        className="relative w-full p-[1.5rem] bg-transparent font-mono leading-normal resize-none"
+        className="relative w-full py-[1.5rem] px-[1rem] bg-transparent font-mono leading-normal resize-none"
         style={{
           caretColor: "white",
           color: "transparent",
