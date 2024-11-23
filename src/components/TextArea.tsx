@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Prism from "prismjs";
+import * as Prism from "prismjs";
 import { LanguagesSupported, TextAreaprops } from "../../types/index.ts";
 import LanguageSelector from "./LanguageSelector.tsx";
 import { Languages } from "../../types/languages.ts";
@@ -10,13 +10,13 @@ export default function TextArea({
 }: TextAreaprops) {
   const [code, setCode] = useState<string>(initialCode);
   const [selectedLanguage, setSelectedLanguage] =
-    useState<LanguagesSupported>(Languages);
+    useState<LanguagesSupported>(language);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       Prism.highlightAll();
     }
-  }, [code, language]);
+  }, [code, selectedLanguage]);
 
   function handleChange(e: React.ChangeEvent<HTMLTextAreaElement>): void {
     setCode(e.target.value);
@@ -44,7 +44,7 @@ export default function TextArea({
             pointerEvents: "none",
           }}
         >
-          <code className={`language-${language.value}`}>{code}</code>
+          <code className={`language-${selectedLanguage.value}`}>{code}</code>
         </pre>
 
         {/* TODO: move it to styles.css and make a seperate class  */}
