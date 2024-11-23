@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <div>
-        <TextArea />
+        <TextArea className="border" initialCode="Const hello = 'world;" />
         <Button />
       </div>
     </>
