@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
 import Prism from "prismjs";
+import { TextAreaprops } from "../../types/index.ts";
 
-interface TextAreaprops {
-  className?: string;
-  initialCode?: string;
-  language: string;
-}
 export default function TextArea({
   className,
   initialCode = "",
-  language = "js",
+  language,
 }: TextAreaprops) {
   const [code, setCode] = useState<string>(initialCode);
 
@@ -32,11 +28,10 @@ export default function TextArea({
         className=" h-full absolute inset-0 m-0 pt-0 px-[1em] overflow-hidden whitespace-pre-wrap font-mono leading-normal"
         style={{
           color: "rgba(255, 255, 255, 0.8)",
-          // background: "transparent",
           pointerEvents: "none",
         }}
       >
-        <code className={`language-${language}`}>{code}</code>
+        <code className={`language-${language.value}`}>{code}</code>
       </pre>
 
       {/* TODO: move it to styles.css and make a seperate class  */}

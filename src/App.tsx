@@ -1,13 +1,16 @@
 import "./App.css";
-import Button from "./components/button";
 import TextArea from "./components/TextArea";
+import { Languages } from "../types/languages.ts";
 
 function App() {
   return (
     <>
       <div>
-        <TextArea className="border" initialCode="const hello = 'world';" />
-        {/* <Button /> */}
+        <TextArea
+          language={Languages[0]}
+          className="border"
+          initialCode="const hello = 'world';"
+        />
       </div>
     </>
   );
