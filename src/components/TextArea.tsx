@@ -39,14 +39,15 @@ export default function TextArea({
 
   return (
     <>
-      <div>
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl font-extrabold">Choose a language and start coding</h1>
         <LanguageSelector
           selectedLanguage={selectedLanguage}
           onLanguageChange={handleLanguageChange}
         />
       </div>
-      <div className="relative mx-auto overflow-hidden rounded-md">
-        <div className="relative w-full h-[400px] max-h-[600px] overflow-auto">
+      <div className="relative mx-auto overflow-hidden rounded-md ">
+        <div className="relative w-full h-[400px] max-h-[600px] overflow-auto ">
           <CodeHighlighter
             onScrollfunction={scrollOverlayAndTextArea}
             selectedLanguage={selectedLanguage}
@@ -55,6 +56,7 @@ export default function TextArea({
           <textarea
             value={code}
             onChange={handleChange}
+            placeholder="Write some code here..."
             onScroll={scrollOverlayAndTextArea}
             className="relative w-full h-full p-[1rem] pt-[1.4rem] bg-transparent font-mono leading-normal resize-none z-10"
             style={{

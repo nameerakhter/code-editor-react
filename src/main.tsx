@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App.tsx";
 import "./prism.styles.css";
 import "prismjs/components/prism-javascript";
+import "prismjs/components/prism-typescript";
 import "prismjs/components/prism-python";
 import "prismjs/components/prism-java";
 import 'prismjs/components/prism-clike';
