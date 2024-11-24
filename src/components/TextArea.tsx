@@ -3,14 +3,15 @@ import * as Prism from "prismjs";
 import { LanguagesSupported, TextAreaprops } from "../../types/index.ts";
 import LanguageSelector from "./LanguageSelector.tsx";
 import { Languages } from "../../types/languages.ts";
+import CodeHighlighter from "./CodeHighlighter.tsx";
 
 export default function TextArea({
-  initialCode = "",
+  starterCode = "",
   language = Languages[0],
 }: TextAreaprops) {
-  const [code, setCode] = useState<string>(initialCode);
-  const [selectedLanguage, setSelectedLanguage] =
-    useState<LanguagesSupported>(language);
+
+  const [code, setCode] = useState<string>(starterCode);
+  const [selectedLanguage, setSelectedLanguage] =useState<LanguagesSupported>(language);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -20,13 +21,22 @@ export default function TextArea({
 
   function handleChange(e: React.ChangeEvent<HTMLTextAreaElement>): void {
     setCode(e.target.value);
-    const textAreaHeight = e.target;
-    textAreaHeight.style.height = "auto";
-    textAreaHeight.style.height = `${Math.min(textAreaHeight.scrollHeight, 400)}px`;
   }
+
   function handleLanguageChange(newLanguage: LanguagesSupported) {
     setSelectedLanguage(newLanguage);
   }
+
+  function scrollOverlayAndTextArea(e: React.UIEvent<HTMLTextAreaElement | HTMLPreElement>) {
+    const target = e.target as HTMLElement;
+    const sibling = target.nextElementSibling || target.previousElementSibling;
+
+    if (sibling) {
+      (sibling as HTMLElement).scrollTop = target.scrollTop;
+      (sibling as HTMLElement).scrollLeft = target.scrollLeft;
+    }
+  }
+
   return (
     <>
       <div>
@@ -35,29 +45,25 @@ export default function TextArea({
           onLanguageChange={handleLanguageChange}
         />
       </div>
-      <div className={`relative mx-auto `}>
-        {/* FIX:  the text area is scrollable but the highlight is not scrollable*/}
-        <pre
-          className=" h-full absolute inset-0 m-0 pt-0 px-[1em] overflow-hidden whitespace-pre-wrap font-mono leading-normal"
-          style={{
-            color: "rgba(255, 255, 255, 0.8)",
-            pointerEvents: "none",
-          }}
-        >
-          <code className={`language-${selectedLanguage.value}`}>{code}</code>
-        </pre>
-
-        {/* TODO: move it to styles.css and make a seperate class  */}
-        <textarea
-          value={code}
-          onChange={handleChange}
-          className="relative w-full py-[1.5rem] px-[1rem] bg-transparent font-mono leading-normal resize-none"
-          style={{
-            caretColor: "white",
-            color: "transparent",
-            outline: "none",
-          }}
-        />
+      <div className="relative mx-auto overflow-hidden rounded-md">
+        <div className="relative w-full h-[400px] max-h-[600px] overflow-auto">
+          <CodeHighlighter
+            onScrollfunction={scrollOverlayAndTextArea}
+            selectedLanguage={selectedLanguage}
+            code={code}
+          />
+          <textarea
+            value={code}
+            onChange={handleChange}
+            onScroll={scrollOverlayAndTextArea}
+            className="relative w-full h-full p-[1rem] pt-[1.4rem] bg-transparent font-mono leading-normal resize-none z-10"
+            style={{
+              caretColor: "white",
+              color: "transparent",
+              outline: "none",
+            }}
+          />
+        </div>
       </div>
     </>
   );

@@ -10,7 +10,7 @@ export default function LanguageSelector({
   onLanguageChange,
 }: LanguageSelectorProps) {
   return (
-    <div className="border-1 border-black  ">
+    <div className="mb-6">
       <select
         value={selectedLanguage.value}
         onChange={(e) => {
@@ -21,11 +21,15 @@ export default function LanguageSelector({
             onLanguageChange(selected);
           }
         }}
-        className="px-3 py-2 border rounded-md mb-4 font-mono text-sm"
+        className="px-4 py-3 bg-[#282a36] text-[#f8f8f2] border border-[#6272a4] rounded-md font-mono text-base hover:border-[#bd93f9] focus:outline-none focus:border-[#bd93f9] focus:ring-1 focus:ring-[#bd93f9] w-48"
       >
         {Languages.map((lang) => {
           return (
-            <option key={lang.label} value={lang.value}>
+            <option 
+              key={lang.label} 
+              value={lang.value}
+              className="bg-[#282a36] text-[#f8f8f2] text-base py-2"
+            >
               {lang.label}
             </option>
           );

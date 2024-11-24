@@ -2,12 +2,16 @@ import { LanguagesSupported } from ".";
 
 export const Languages: LanguagesSupported[] = [
   {
+    label: "React",
+    value: "jsx",
+  },
+  {
     label: "Javascript",
     value: "js",
   },
   {
     label: "TypeScript",
-    value: "ts",
+    value: "typescript",
   },
   {
     label: "Python",
@@ -30,11 +34,7 @@ export const Languages: LanguagesSupported[] = [
     value: "css",
   },
   {
-    label: "React JSX",
+    label: "React",
     value: "jsx",
-  },
-  {
-    label: "React TSX",
-    value: "tsx",
-  },
+  }
 ];
