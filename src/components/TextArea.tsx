@@ -39,8 +39,8 @@ export default function TextArea({
 
   return (
     <>
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-extrabold">Choose a language and start coding</h1>
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0">
+        <h1 className="text-xl sm:text-2xl font-extrabold text-center sm:text-left">Choose a language and start coding</h1>
         <LanguageSelector
           selectedLanguage={selectedLanguage}
           onLanguageChange={handleLanguageChange}
