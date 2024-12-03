@@ -19,9 +19,26 @@ This project implements a simple code editor in React
 - **HTML Textarea**: Used for text input by users.
 
 ## How It Works
-1. The main editor consists of a `textarea` for user input and a `CodeHighlighter` component for displaying syntax-highlighted code.
-2. User input in the `textarea` updates the code state, and the updated code is passed to PrismJS for syntax highlighting.
-3. The `textarea` and `CodeHighlighter` component are overlaid to create the illusion of a single code editor.
+1. The main editor consists of two components:
+   - A transparent `textarea` for user input with a white caret for cursor visibility
+   - A `CodeHighlighter` component that renders the syntax-highlighted code using PrismJS
+
+2. The editor maintains two states:
+   - `code`: This Stores the current text content that the user is typing
+   - `selectedLanguage`: Tracks the selected programming language
+
+3. When the user types in the textarea:
+   - The `handleChange` function updates the `code` state
+   - A `useEffect` hook triggers PrismJS to re-highlight the code
+   - The `CodeHighlighter` component re-renders with the updated highlighted code
+
+4. Synchronization features:
+   - The textarea and highlighter are overlaid on top of each other
+   - `scrollOverlayAndTextArea` function is used to sync both the scroll for the textarea and the highlighted code
+   - The textarea is set to transparent
+
+5. Language selection:
+   - I implemented this so that the Users can switch languages via the `LanguageSelector` component this gives more flexibility to add multi language support
 
 ## Implementation Highlights
 
