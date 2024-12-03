@@ -4,7 +4,7 @@
 https://github.com/user-attachments/assets/09e65d0a-92fd-468e-bf55-c9b277a8fc79
 
 
-This project implements a simple code editor in React, inspired by the example [react-simple-code-editor](https://react-simple-code-editor.github.io/react-simple-code-editor/).
+This project implements a simple code editor in React
 
 ## Features
 - Syntax highlighting using **PrismJS**.
