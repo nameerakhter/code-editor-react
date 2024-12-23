@@ -1,6 +1,6 @@
-# Code Editor Assignment Solution
+# Code Editor React
 
-
+## Video Demonstration
 https://github.com/user-attachments/assets/09e65d0a-92fd-468e-bf55-c9b277a8fc79
 
 
@@ -13,9 +13,7 @@ This project implements a simple code editor in React
 
 ## Technologies Used
 - **React**: For building the interactive user interface.
-- **PrismJS**: A lightweight library for syntax highlighting.
-  - Official Site: [https://prismjs.com/](https://prismjs.com/)
-  - React Integration: [prism-react-renderer](https://github.com/FormidableLabs/prism-react-renderer)
+- **PrismJS**: A library for syntax highlighting.
 - **HTML Textarea**: Used for text input by users.
 
 ## How It Works
@@ -42,7 +40,7 @@ This project implements a simple code editor in React
 
 ## Implementation Highlights
 
-### Code Explanation
+### Code Snippet
 ```tsx
 import { useEffect, useState } from "react";
 import * as Prism from "prismjs";
