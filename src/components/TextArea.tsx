@@ -40,7 +40,7 @@ export default function TextArea({
   return (
     <>
       <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0">
-        <h1 className="text-xl sm:text-2xl font-extrabold text-center sm:text-left">Choose a language and start coding</h1>
+        <h1 className="text-xl sm:text-2xl font-extrabold text-center sm:text-left font-mono">Choose a language and start coding</h1>
         <LanguageSelector
           selectedLanguage={selectedLanguage}
           onLanguageChange={handleLanguageChange}
@@ -54,7 +54,7 @@ export default function TextArea({
           </div>
           </div>
       <div className="bg-[#282A36] relative mx-auto overflow-hidden rounded-b-lg ">
-        <div className="relative w-full h-[400px] max-h-[600px] overflow-auto ">
+        <div className="relative w-full h-[420px] max-h-[900px] overflow-auto ">
           <CodeHighlighter
             onScrollfunction={scrollOverlayAndTextArea}
             selectedLanguage={selectedLanguage}
@@ -65,7 +65,7 @@ export default function TextArea({
             onChange={handleChange}
             placeholder="Write some code here..."
             onScroll={scrollOverlayAndTextArea}
-            className="relative w-full h-full p-[1rem] pt-[1.4rem] bg-transparent font-mono leading-normal resize-none z-10 "
+            className="relative w-full h-full p-[1rem] pt-[1.4rem] bg-transparent font-mono leading-normal resize-none z-10 max-h-[900px]"
             style={{
               caretColor: "white",
               color: "transparent",
