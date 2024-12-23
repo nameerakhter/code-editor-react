@@ -46,7 +46,14 @@ export default function TextArea({
           onLanguageChange={handleLanguageChange}
         />
       </div>
-      <div className="relative mx-auto overflow-hidden rounded-md ">
+      <div className="bg-[#282A36] p-2 rounded-t-lg">
+          <div className="flex space-x-2">
+            <div className="w-3 h-3 rounded-full bg-red-500"></div>
+            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+          </div>
+          </div>
+      <div className="bg-[#282A36] relative mx-auto overflow-hidden rounded-b-lg ">
         <div className="relative w-full h-[400px] max-h-[600px] overflow-auto ">
           <CodeHighlighter
             onScrollfunction={scrollOverlayAndTextArea}
@@ -58,7 +65,7 @@ export default function TextArea({
             onChange={handleChange}
             placeholder="Write some code here..."
             onScroll={scrollOverlayAndTextArea}
-            className="relative w-full h-full p-[1rem] pt-[1.4rem] bg-transparent font-mono leading-normal resize-none z-10"
+            className="relative w-full h-full p-[1rem] pt-[1.4rem] bg-transparent font-mono leading-normal resize-none z-10 "
             style={{
               caretColor: "white",
               color: "transparent",
