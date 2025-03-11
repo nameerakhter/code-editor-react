@@ -67,9 +67,23 @@ export default function CodeEditor() {
       <textarea
         value={code}
         onChange={handleCodeChange}
-        className="textarea-input"
+                className="textarea-input"
         spellCheck="false"
       />
     </div>
   );
 }
+```
+
+### Scroll Synchronization Function
+```tsx
+function scrollOverlayAndTextArea(e: React.UIEvent<HTMLTextAreaElement | HTMLPreElement>) {
+  const target = e.target as HTMLElement;
+  const sibling = target.nextElementSibling || target.previousElementSibling;
+
+  if (sibling) {
+    (sibling as HTMLElement).scrollTop = target.scrollTop;
+    (sibling as HTMLElement).scrollLeft = target.scrollLeft;
+  }
+}
+```
